@@ -16,26 +16,14 @@
 				<section class="section section1 contact-bg main-visual">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-        <?
+							<?
         $tablename="tb_gallery";
         include $_SERVER[DOCUMENT_ROOT]."/INC/tableset.php";
         $query1 = "SELECT * FROM $tablename WHERE viewtype='Y'  ORDER BY sortnum ASC,reg_date DESC ";
-        $result1 = $db->fetch_array($query1);
-        $rcount1 = count($result1) ;
-          $b=1;
-          for ( $i=0; $i<$rcount1; $i++,$b++) {
-          $my_fileadd_name = $result1[$i][fileadd_name];
-
-          if($my_fileadd_name) {
-            $view_img = "$HOME_PATH/$tablefile/$my_fileadd_name";
-          } else {
-            $view_img = "../images/board/no_img.jpg";
-          }
-          $link_page = "../cs/notice.html?bmain=view&uid=".$result1[$i][uid];
-        ?>
+        $result1 = $db->fetch_array($query1); $rcount1 = count($result1) ; $b=1; for ( $i=0; $i<$rcount1; $i++,$b++) { $my_fileadd_name = $result1[$i][fileadd_name]; if($my_fileadd_name) { $view_img = "$HOME_PATH/$tablefile/$my_fileadd_name"; } else { $view_img = "../images/board/no_img.jpg"; } $link_page = "../cs/notice.html?bmain=view&uid=".$result1[$i][uid]; ?>
 							<div class="swiper-slide item"><img src="<?=$view_img?>" alt="<?=stripslashes(strip_tags($result1[$i][title]))?>" /></div>
-        <?}?>
-              <!-- <div class="swiper-slide item"><img src="../assets/images/sub/contact-bg.png" alt="슬라이드1" /></div> -->
+							<?}?>
+							<!-- <div class="swiper-slide item"><img src="../assets/images/sub/contact-bg.png" alt="슬라이드1" /></div> -->
 						</div>
 					</div>
 					<div class="main-visual__control">
@@ -47,7 +35,7 @@
 						<div class="contact-intro text-white row flex-column justify-content-center p-12">
 							<img class="d-block" style="width: 225px" src="../assets/images/main/yg_white.png" alt="" />
 							<span class="m_line mt-7 mb-5"></span>
-							<p class="font-weight-light common-text--18 text-white text-left pb-8">주소: 경기도 용인시 기흥구 중부대로 184, A동 23층(힉스유타워)<br />전화번호: 031-546-0830<br />사업자등록번호: 381-86-01940</p>
+							<p class="font-weight-light common-text--18 text-white text-left pb-8">주소: 경기도 용인시 기흥구 중부대로 184, A동 23층(힉스유타워)<br />전화번호: 031-546-0830<br />사업자등록번호: 381-86-01949</p>
 							<button class="company-download text-white"><a href="../assets/images/sub/주식회사연교회사소개서.pdf" download>회사 소개서 다운로드</a></button>
 						</div>
 					</div>
