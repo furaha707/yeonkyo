@@ -1,0 +1,97 @@
+<? include "../include/head.html" ?>
+<!DOCTYPE html>
+<html lang="<?=$P_lang?>">
+	<head>
+		<?
+    $P_dp1 = '5';
+    include "../include/meta.html" 
+    ?>
+		<link rel="stylesheet" href="../assets/css/sub.css" />
+	</head>
+	<body>
+		<main class="main main-leadership pb-0">
+			<? include "../include/header.html" ?>
+
+			<div id="fullpage" class="fullpage-wrapper">
+				<section class="section section1 contact-bg main-visual">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+        <?
+        $tablename="tb_gallery";
+        include $_SERVER[DOCUMENT_ROOT]."/INC/tableset.php";
+        $query1 = "SELECT * FROM $tablename WHERE viewtype='Y'  ORDER BY sortnum ASC,reg_date DESC ";
+        $result1 = $db->fetch_array($query1);
+        $rcount1 = count($result1) ;
+          $b=1;
+          for ( $i=0; $i<$rcount1; $i++,$b++) {
+          $my_fileadd_name = $result1[$i][fileadd_name];
+
+          if($my_fileadd_name) {
+            $view_img = "$HOME_PATH/$tablefile/$my_fileadd_name";
+          } else {
+            $view_img = "../images/board/no_img.jpg";
+          }
+          $link_page = "../cs/notice.html?bmain=view&uid=".$result1[$i][uid];
+        ?>
+							<div class="swiper-slide item"><img src="<?=$view_img?>" alt="<?=stripslashes(strip_tags($result1[$i][title]))?>" /></div>
+        <?}?>
+              <!-- <div class="swiper-slide item"><img src="../assets/images/sub/contact-bg.png" alt="슬라이드1" /></div> -->
+						</div>
+					</div>
+					<div class="main-visual__control">
+						<div class="swiper-button swiper-button-prev"></div>
+						<div class="swiper-button swiper-button-next"></div>
+					</div>
+
+					<div class="row justify-content-end">
+						<div class="contact-intro text-white row flex-column justify-content-center p-12">
+							<img class="d-block" style="width: 225px" src="../assets/images/main/yg_white.png" alt="" />
+							<span class="m_line mt-7 mb-5"></span>
+							<p class="font-weight-light common-text--18 text-white text-left pb-8">주소: 경기도 용인시 기흥구 중부대로 184, A동 23층(힉스유타워)<br />전화번호: 031-546-0830<br />사업자등록번호: 381-86-01940</p>
+							<button class="company-download text-white"><a href="../assets/images/sub/주식회사연교회사소개서.pdf" download>회사 소개서 다운로드</a></button>
+						</div>
+					</div>
+
+					<div class="scrolldown row flex-direction-row">
+						<img class="d-block scroll-img pb-1" src="../assets/images/sub/ico_scroll.png" alt="스크롤다운" />
+						<span class="text-white common-text--14">Scroll Down</span>
+					</div>
+				</section>
+
+				<section class="section section2 fp-auto-height">
+					<? include "../include/footer.html" ?>
+				</section>
+			</div>
+		</main>
+		<? include "../include/js.html" ?>
+		<script>
+			var mainFullpage = new fullpage('#fullpage', {
+				licenseKey: 'F67168A3-4AB64A38-A211B922-2DB1C3AC',
+				// anchors: ['home', 'platform'],
+				scrollBar: true,
+				responsiveWidth: 1200,
+				scrollingSpeed: 600,
+				easing: 'easeInOutCubic',
+				easingcss3: 'ease',
+			});
+
+			var visualSwiper = new Swiper('.main-visual .swiper-container', {
+				loop: true,
+				effect: 'fade',
+				fadeEffect: {
+					crossFade: true,
+				},
+				autoplay: {
+					delay: 5000,
+					disableOnInteraction: false,
+				},
+				navigation: {
+					nextEl: '.main-visual .swiper-button-next',
+					prevEl: '.main-visual .swiper-button-prev',
+				},
+			});
+
+			$('.logo-color-gray').hide();
+		</script>
+	</body>
+</html>

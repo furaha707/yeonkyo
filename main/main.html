@@ -1,0 +1,66 @@
+<? include "../include/head.html" ?>
+<!DOCTYPE html>
+<html lang="<?=$P_lang?>">
+	<head>
+		<?
+    $P_dp0 = 'main';
+    include "../include/meta.html" 
+    ?>
+		<link rel="stylesheet" href="../assets/css/main.min.css" />
+	</head>
+	<body class="main-page">
+		<main class="main" id="contents">
+			<? include "../include/header.html" ?>
+
+			<!-- S : section -->
+			<section class="section section1 position-relative">
+				<div class="main-bg"></div>
+
+				<div class="w-100 h-100">
+					<div class="row justify-content-left align-items-end w-100 h-auto h-sm-100">
+						<div class="main-rec p-11">
+							<span class="m-tit text-white font-weight-regular common-text--16 text-gray-a d-block pb-5">회사소개</span>
+							<p class="m-txt text-white font-weight-light common-text--24">
+								연교는 각 분야의 업계 최고 수준의 역량을 갖춘<br class="d-none d-sm-block" />
+								최고의 인재들이 모여 부동산 개발 패러다임의<br class="d-none d-sm-block" />
+								혁신을 통해 최적화, 고도화된 물류센터를 <br class="d-none d-sm-block" />
+								개발하기 위해 노력합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- E : section -->
+		</main>
+
+		<? include "../include/js.html" ?>
+		<script>
+			$(document).ready(function () {
+				$('.main-bg').addClass('active');
+			});
+
+			var visualSwiper = new Swiper('.main-visual .swiper-container', {
+				loop: true,
+				effect: 'fade',
+				fadeEffect: {
+					crossFade: true,
+				},
+				autoplay: {
+					delay: 5000,
+					disableOnInteraction: false,
+				},
+				pagination: {
+					el: '.main-visual .swiper-pagination',
+					type: 'bullets',
+					clickable: true,
+				},
+				navigation: {
+					nextEl: '.main-visual .swiper-button--next',
+					prevEl: '.main-visual .swiper-button--prev',
+				},
+			});
+
+			$('.logo-color-gray').hide();
+		</script>
+	</body>
+</html>

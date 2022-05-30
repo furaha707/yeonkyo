@@ -1,0 +1,77 @@
+<? include "../include/head.html" ?>
+<!DOCTYPE html>
+<html lang="<?=$P_lang?>">
+
+<head>
+	<?
+    $P_dp1 = '2';
+    include "../include/meta.html" 
+    ?>
+	<link rel="stylesheet" href="../assets/css/sub.css" />
+</head>
+
+<body>
+	<main class="main pb-0">
+		<? include "../include/header.html" ?>
+
+		<div id="fullpage" class="fullpage-wrapper">
+			<!-- S : section1 -->
+			<section class="section section1 company-bg">
+				<div class="container">
+					<div class="row justify-content-center p-5">
+						<div class="company-intro text-white row flex-column justify-content-center flex-nowrap h-100">
+							<p class="common-text--40 font-weight-bold">STRIVING FOR EXCELLENCE</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="scrolldown row flex-direction-row">
+					<img class="d-block scroll-img pb-1" src="../assets/images/sub/ico_scroll.png" alt="스크롤다운" />
+					<span class="text-white common-text--14">Scroll Down</span>
+				</div>
+			</section>
+			<!-- E : section1 -->
+
+			<!-- S : section2 -->
+			<section class="section section2 video-wrapper">
+				<div class="company-video">
+					<iframe
+						src="https://www.youtube.com/embed/8GjQ-Wo30Xg?controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8GjQ-Wo30Xg"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						class="yt-iframe" allowfullscreen></iframe>
+				</div>
+			</section>
+			<!-- E : section2 -->
+
+			<!-- S : section3 -->
+			<section class="section section3 fp-auto-height">
+				<? include "../include/footer.html" ?>
+			</section>
+			<!-- E : section3 -->
+		</div>
+	</main>
+	<? include "../include/js.html" ?>
+	<script>
+		var ytIframeSrc = $('.yt-iframe').attr('src');
+		var mainFullpage = new fullpage('#fullpage', {
+			licenseKey: 'F67168A3-4AB64A38-A211B922-2DB1C3AC',
+			// anchors: ['home', 'platform'],
+			//scrollBar: true,
+			responsiveWidth: 1200,
+			responsiveHeight: 800,
+			scrollingSpeed: 600,
+			easing: 'easeInOutCubic',
+			easingcss3: 'ease',
+			onLeave: function (origin, destination, direction) {
+				console.log(destination);
+				if (destination.index == 1) {
+					$('.yt-iframe').attr('src', ytIframeSrc);
+				}
+			},
+		});
+
+		$('.logo-color-gray').hide();
+	</script>
+</body>
+
+</html>
